@@ -90,25 +90,154 @@ int analyseGame(char game[3][3]) {
 }
 
 int main() {
-    char game[3][3] =
+
+    //I had tried to test this with unit tests but there were issues with the linker and i couldnt get the the Projects to talk to each other
+
+    //Game Not Started
+    char blank[3][3] =
     {
-        NoVal, NoVal, NoVal,
-        NoVal, NoVal, NoVal,
-        NoVal, NoVal, NoVal
+        NoVal,      NoVal,      NoVal,
+        NoVal,      NoVal,      NoVal,
+        NoVal,      NoVal,      NoVal
     };
 
-    std::cout << analyseGame(game);
+    if (analyseGame(blank) == GameInProgress)
+    {
+        std::cout << "Blank Test: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Blank Test: Test Failed\n\n";
+    }
+
+	//Game Incomplete
+    char incomplete[3][3] =
+    {
+	    Player2,	Player1,	Player1,
+		NoVal,		Player1,	NoVal,
+		Player2,	NoVal,		Player2
+	};
+
+    if (analyseGame(incomplete) == GameInProgress)
+    {
+        std::cout << "Incomplete Test: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Incomplete Test: Test Failed\n\n";
+    }
+	
+    //Game Ended In A Draw
+	char draw[3][3] = {
+	    Player1,	Player2,	Player1,
+		Player2,	Player1,	Player1,
+		Player2,	Player1,	Player2
+	};
+
+    if (analyseGame(draw) == Draw)
+    {
+        std::cout << "Draw Test: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Draw Test: Test Failed\n\n";
+    }
+
+    //Player 1 Wins Vertical
+	char vertical1[3][3] = {
+		NoVal,		Player1,	Player2,
+		NoVal,		Player1,	Player2,
+		Player2,	Player1,	Player1
+	};
+
+    if (analyseGame(vertical1) == Player1Win)
+    {
+        std::cout << "Vert Player1: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Vert Player1: Test Failed\n\n";
+    }
+
+    //Player 2 Wins Vertical
+	char vertical2[3][3] = {
+		Player1,	Player2,	NoVal,
+		NoVal,		Player2,	NoVal,
+		Player1,	Player2,	Player1
+	};
+
+    if (analyseGame(vertical2) == Player2Win)
+    {
+        std::cout << "Vert Player2: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Vert Player2: Test Failed\n\n";
+    }
+
+	//Player 1 Wins Horizontal
+	char horizontal1[3][3] = {
+		Player1,	Player1,	Player1,
+		Player2,	Player2,	NoVal,
+		NoVal,		Player1,	Player2
+	};
+
+    if (analyseGame(horizontal1) == Player1Win)
+    {
+        std::cout << "Hori Player1: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Hori Player1: Test Failed\n\n";
+    }
+
+    //Player 2 Wins Horizontal
+	char horizontal2[3][3] = {
+		NoVal,		NoVal,		Player1,
+		Player2,	Player2,	Player2,
+		Player1,	Player1,	NoVal
+	};
+
+    if (analyseGame(horizontal2) == Player2Win)
+    {
+        std::cout << "Hori Player2: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Hori Player2: Test Failed\n\n";
+    }
+
+    //Player 1 Wins Diagonal
+	char diag1[3][3] = {
+		Player1,	NoVal,		NoVal,
+		Player2,	Player1,	Player2,
+		Player2,	Player1,	Player1
+	};
+
+    if (analyseGame(diag1) == Player1Win)
+    {
+        std::cout << "Diag Player1: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Diag Player1: Test Failed\n\n";
+    }
+
+    //Player 2 Wins Diagonal
+	char diag2[3][3] = {
+		NoVal,		Player1,	Player2,
+		NoVal,		Player2,	NoVal,
+		Player2,	Player1,	Player1
+	};
+
+    if (analyseGame(diag2) == Player2Win)
+    {
+        std::cout << "Diag Player2: Test Passed\n\n";
+    }
+    else
+    {
+        std::cout << "Diag Player2: Test Failed\n\n";
+    }
 
     return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

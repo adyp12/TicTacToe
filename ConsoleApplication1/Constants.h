@@ -4,6 +4,6 @@ const int Player1Win = 1;
 const int Player2Win = 2;
 const int Draw = 3;
 
-const std::string Player1 = "X";
-const std::string Player2 = "O";
-const std::string NoVal = "N";
+const char Player1 = 'X';
+const char Player2 = 'O';
+const char NoVal = 'N';

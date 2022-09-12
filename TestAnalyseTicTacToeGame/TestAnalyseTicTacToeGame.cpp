@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include "../ConsoleApplication1/AnalyseGame.h"
 #include "../ConsoleApplication1/Constants.h"
+#include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -13,7 +14,7 @@ namespace TestAnalyseTicTacToeGame
 		
 		TEST_METHOD(TestPreGame)
 		{
-			std::string game[3][3] = {
+			char game[3][3] = {
 				NoVal,		NoVal,		NoVal,
 				NoVal,		NoVal,		NoVal,
 				NoVal,		NoVal,		NoVal
@@ -24,7 +25,7 @@ namespace TestAnalyseTicTacToeGame
 
 		TEST_METHOD(TestIncompleteGame)
 		{
-			std::string game[3][3] = {
+			char game[3][3] = {
 				Player2,	Player1,	Player1,
 				NoVal,		Player1,	NoVal,
 				Player2,	NoVal,		Player2
@@ -35,7 +36,7 @@ namespace TestAnalyseTicTacToeGame
 
 		TEST_METHOD(TestDraw)
 		{
-			std::string game[3][3] = {
+			char game[3][3] = {
 				Player1,	Player2,	Player1,
 				Player2,	Player1,	Player1,
 				Player2,	Player1,	Player2
@@ -46,7 +47,7 @@ namespace TestAnalyseTicTacToeGame
 
 		TEST_METHOD(TestWinVert)
 		{
-			std::string game1[3][3] = {
+			char game1[3][3] = {
 				NoVal,		Player1,	Player2,
 				NoVal,		Player1,	Player2,
 				Player2,	Player1,	Player1
@@ -54,7 +55,7 @@ namespace TestAnalyseTicTacToeGame
 
 			Assert::AreEqual(Player1Win, analyseGame(game1));
 
-			std::string game2[3][3] = {
+			char game2[3][3] = {
 				Player1,	Player2,	NoVal,
 				NoVal,		Player2,	NoVal,
 				Player1,	Player2,	Player1
@@ -65,7 +66,7 @@ namespace TestAnalyseTicTacToeGame
 
 		TEST_METHOD(TestWinHori)
 		{
-			std::string game1[3][3] = {
+			char game1[3][3] = {
 				Player1,	Player1,	Player1,
 				Player2,	Player2,	NoVal,
 				NoVal,		Player1,	Player2
@@ -73,7 +74,7 @@ namespace TestAnalyseTicTacToeGame
 
 			Assert::AreEqual(Player1Win, analyseGame(game1));
 
-			std::string game2[3][3] = {
+			char game2[3][3] = {
 				NoVal,		NoVal,		Player1,
 				Player2,	Player2,	Player2,
 				Player1,	Player1,	NoVal
@@ -84,7 +85,7 @@ namespace TestAnalyseTicTacToeGame
 
 		TEST_METHOD(TestWinDiag)
 		{
-			std::string game1[3][3] = {
+			char game1[3][3] = {
 				Player1,	NoVal,		NoVal,
 				Player2,	Player1,	Player2,
 				Player2,	Player1,	Player1
@@ -92,7 +93,7 @@ namespace TestAnalyseTicTacToeGame
 
 			Assert::AreEqual(Player1Win, analyseGame(game1));
 
-			std::string game2[3][3] = {
+			char game2[3][3] = {
 				NoVal,		Player1,	Player2,
 				NoVal,		Player2,	NoVal,
 				Player2,	Player1,	Player1

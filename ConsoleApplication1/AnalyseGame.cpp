@@ -16,16 +16,89 @@ The arguments to the function should be a suitable representation of the Tic-Tac
     Assumptions:
      - Player 1 is Xs & Player 2 is Os
 */
-
+#include "AnalyseGame.h"
 #include <iostream>
 #include "Constants.h"
-#include "AnalyseGame.h"
 
-int analyseGame(std::string game[3][3]) {
-    return 0;
+
+int analyseGame(char game[3][3]) {
+
+    //Check Horizontal
+    for (size_t i = 0; i < 3; i++) {
+        if (game[0][i] == Player1 && game[1][i] == Player1 && game[2][i] == Player1) {
+            return Player1Win;
+        }
+        else if(game[0][i] == Player2 && game[1][i] == Player2 && game[2][i] == Player2) {
+            return Player2Win;
+        }
+    }
+
+    //Check Vertical
+    for (size_t i = 0; i < 3; i++) {
+        if (game[i][0] == Player1 && game[i][1] == Player1 && game[i][2] == Player1) {
+            return Player1Win;
+        }
+        else if (game[i][0] == Player2 && game[i][1] == Player2 && game[i][2] == Player2) {
+            return Player2Win;
+        }
+    }
+
+    //Check Diagonal
+    char firstValLeft = game[0][0];
+
+    if (firstValLeft != NoVal) {
+        if (game[0][0] == firstValLeft && game[1][1] == firstValLeft && game[2][2] == firstValLeft) {
+            if(firstValLeft == Player1) {
+                return Player1Win;
+            }
+            else {
+                return Player2Win;
+            }
+        }
+    }
+
+    char firstValRight = game[0][2];
+
+    if (firstValRight != NoVal) {
+        if (game[0][2] == firstValRight && game[1][1] == firstValRight && game[2][0] == firstValRight) {
+            if (firstValRight == Player1) {
+                return Player1Win;
+            }
+            else {
+                return Player2Win;
+            }
+        }
+    }
+
+    //Check for Draw
+    bool spaceRemaining = false;
+
+    for (size_t i = 0; i < 3; i++) {
+        for (size_t j = 0; j < 3; j++) {
+            if (game[i][j] == NoVal) {
+                spaceRemaining = true;
+                break;
+            }
+        }
+    }
+
+    if (!spaceRemaining) {
+        return Draw;
+    }
+
+    return GameInProgress;
 }
 
 int main() {
+    char game[3][3] =
+    {
+        NoVal, NoVal, NoVal,
+        NoVal, NoVal, NoVal,
+        NoVal, NoVal, NoVal
+    };
+
+    std::cout << analyseGame(game);
+
     return 0;
 }
 
